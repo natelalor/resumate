@@ -1,8 +1,34 @@
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title {
+  font-size: 4em;
+  color: rgb(225, 85, 6);
+}
+.nav{
+  display: flex;
+}
+
+
+
+
+
+
+
+
+
+/* 
+Below was default styling that came with the project initiation. Feel free to delete.
+*/
+
+/*
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
+ :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -30,4 +56,4 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-}
+} */
