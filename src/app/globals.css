@@ -5,9 +5,9 @@
 
 /* nav animation for login/signup */
 .tab-transition {
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .tab-transition.active {
-    transform: translateY(-5px); /* Adjust the value for the sliding effect */
-  }
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.tab-transition.active {
+  transform: translateY(-5px); /* Adjust the value for the sliding effect */
+}
