@@ -45,7 +45,7 @@ export default function Login() {
             <input type="text" id="email" name="email" placeholder="me@me.com" ></input>
             <label htmlFor="password">Password:</label>
             <input type="password" id="password" name="password" placeholder="•••••••••••"></input>
-            <input className="w-auto px-4 py-2 rounded-lg shadow-lg bg-theme-orange hover:bg-theme-orange-light"type="submit" value="Submit"></input>
+            <input className="w-auto px-4 py-2 rounded-lg shadow-lg bg-theme-orange hover:bg-theme-orange-light"type="submit" value="Let's Go"></input>
           </form>
         </div>
     </main>
