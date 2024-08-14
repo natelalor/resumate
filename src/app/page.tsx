@@ -3,8 +3,8 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main>
-      <body>
-        <div className="title">
+      <body className="flex flex-col items-center">
+        <div className="text-6xl text-theme-orange">
           <p>Resumate</p>
         </div>
         <div className="body">
