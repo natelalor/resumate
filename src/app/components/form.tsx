@@ -21,7 +21,7 @@ export default function Form({ activeTab }: FormProps) {
         </>
       )}
       
-      <input className="w-auto px-4 py-2 rounded-lg shadow-lg bg-theme-orange hover:bg-theme-orange-light" type="submit" value="Let's Go" />
+      <input className="w-auto px-4 py-2 rounded-lg shadow-lg bg-theme-orange hover:bg-theme-orange-light text-white" type="submit" value="Let's Go" />
     </form>
   );
 }
