@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Form from './components/form';
 import Nav from './components/nav';
 import Title from './components/title';
 
 export default function Login() {
   const [activeTab, setActiveTab] = useState<'login' | 'signup'>('login');
-
+  
   return (
     <main className="flex flex-col items-center">
       <Title />

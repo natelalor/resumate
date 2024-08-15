@@ -1,16 +1,24 @@
 "use client";
 
 import React from 'react';
+import { useRouter } from 'next/navigation';
 
 interface FormProps {
   activeTab: 'login' | 'signup';
 }
 
 export default function Form({ activeTab }: FormProps) {
+  const router = useRouter(); // Initialize the useRouter hook
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault(); 
+    router.push('/home'); // to go to home page after submitting form
+  };
+
   return (
-    <form className="flex flex-col space-y-4 py-10 px-5">
+    <form onSubmit={handleSubmit} className="flex flex-col space-y-4 py-10 px-5">
       <label htmlFor="email">Email:</label>
-      <input type="text" id="email" name="email" placeholder="me@me.com" />
+      <input type="text" id="email" name="email" placeholder="name@email.com" />
       <label htmlFor="password">Password:</label>
       <input type="password" id="password" name="password" placeholder="•••••••••••" />
       
