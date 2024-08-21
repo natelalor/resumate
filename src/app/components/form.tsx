@@ -12,7 +12,7 @@ export default function Form({ activeTab }: FormProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault(); 
-    router.push('/home'); // to go to home page after submitting form
+    router.push('/tracker'); // to go to tracker page after submitting form
   };
 
   return (
