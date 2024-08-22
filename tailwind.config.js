@@ -12,6 +12,9 @@ module.exports = {
         'white': '#ffffff',
         'text-color': 'text-gray-600',
       },
+      boxShadow: {
+        'orange': '0 0 6px 4px rgba(225, 85, 6, 0.5)',
+      },
     },
   },
   plugins: [],

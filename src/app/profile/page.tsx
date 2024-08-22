@@ -13,9 +13,10 @@ export default function Profile() {
       <div>
         <MainNav activeTab={activeTab as 'tracker' | 'walter' | 'profile'} />
       </div>
-      <div>
+      {/* body container */}
+      <div className="shadow-orange rounded-2xl">
         <p>
-            PROFILE!
+            PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! 
         </p>
       </div>
     </main>
