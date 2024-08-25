@@ -6,12 +6,12 @@ import MainNav from '../components/MainNav';
 
 export default function Profile() {
   const pathname = usePathname();
-  const activeTab = pathname.split('/')[1] || 'tracker';
+  const activeTab = pathname.split('/')[1] || 'search';
 
   return (
     <main className="flex flex-col items-center">
       <div>
-        <MainNav activeTab={activeTab as 'tracker' | 'walter' | 'profile'} />
+        <MainNav activeTab={activeTab as 'search' | 'walter' | 'profile'} />
       </div>
       <div>
         <p>
