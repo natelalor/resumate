@@ -3,6 +3,8 @@
 import React from 'react';
 import { usePathname } from 'next/navigation';
 import MainNav from '../components/MainNav';
+import ProfilePicture from './components/ProfilePicture';
+import ProfileForm from './components/profileForm';
 
 export default function Profile() {
   const pathname = usePathname();
@@ -15,9 +17,8 @@ export default function Profile() {
       </div>
       {/* body container */}
       <div className="shadow-orange rounded-2xl">
-        <p>
-            PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! PROFILE! 
-        </p>
+        <ProfilePicture />
+        <ProfileForm />
       </div>
     </main>
   );
