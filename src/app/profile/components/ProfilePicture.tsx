@@ -2,15 +2,14 @@
 
 import React from 'react';
 
-export default function Title() {
+export default function ProfilePicture() {
   return (
     <div className="">
     {/* profile picture & name container */}
-        <div >
-            {/* Profile picture container */}
-            <p>Profile Picture Here</p>
+        <div className="w-56 m-3">
+            <img src="./images/profile_picture_placeholder.png"/> 
         </div>
-        <div>
+        <div className="flex flex-col items-center font-bold">
             {/* name container */}
             <p>John Appleseed</p>
         </div>

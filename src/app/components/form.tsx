@@ -18,14 +18,14 @@ export default function Form({ activeTab }: FormProps) {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col space-y-4 py-10 px-5">
       <label htmlFor="email">Email:</label>
-      <input type="text" id="email" name="email" placeholder="name@email.com" />
+      <input type="text" id="email" name="email" placeholder="name@email.com" required />
       <label htmlFor="password">Password:</label>
-      <input type="password" id="password" name="password" placeholder="•••••••••••" />
+      <input type="password" id="password" name="password" placeholder="•••••••••••" required />
       
       {activeTab === 'signup' && (
         <>
           <label htmlFor="confirmPassword">Confirm Password:</label>
-          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="•••••••••••" />
+          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="•••••••••••" required />
         </>
       )}
       
