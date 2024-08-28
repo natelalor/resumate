@@ -8,11 +8,13 @@ export default function ProfileForm() {
     const router = useRouter(); // Initialize the useRouter hook
 
     const handleSubmit = (e: React.FormEvent) => {
-      e.preventDefault();
-      setIsSubmitting(true); // Set the button state to "submitting"
-      setTimeout(() => setIsSubmitting(false), 3000); // Reset button state after 3 seconds
-    //   router.push('/tracker'); 
-    };
+        e.preventDefault();
+        setIsSubmitting(true); // Set the button state to "submitting"
+        setTimeout(() => {
+          setIsSubmitting(false); // Reset button state after 3 seconds
+        //   router.push('/tracker'); 
+        }, 3000); // Simulate a delay for the notification
+      };
 
     return (
         <div className="">
@@ -24,7 +26,7 @@ export default function ProfileForm() {
                 <label className="text-theme-orange" htmlFor="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="name@email.com" />
                 <label className="text-theme-orange" htmlFor="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="111-1111" required/>
+                <input type="tel" id="phone" name="phone" placeholder="111-1111" />
 
                 <input
                     className={`w-auto hover:cursor-pointer px-4 py-2 rounded-lg shadow-lg text-white ${isSubmitting ? 'bg-green-500' : 'bg-theme-orange'} ${isSubmitting ? 'hover:bg-green-400 hover:cursor-wait' : 'hover:bg-theme-orange-light'}`}
