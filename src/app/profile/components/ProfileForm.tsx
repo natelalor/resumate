@@ -27,7 +27,7 @@ export default function ProfileForm() {
                 <input type="tel" id="phone" name="phone" placeholder="111-1111" required/>
 
                 <input
-                    className={`w-auto px-4 py-2 rounded-lg shadow-lg text-white ${isSubmitting ? 'bg-green-500' : 'bg-theme-orange'} ${isSubmitting ? 'hover:bg-green-400' : 'hover:bg-theme-orange-light'}`}
+                    className={`w-auto hover:cursor-pointer px-4 py-2 rounded-lg shadow-lg text-white ${isSubmitting ? 'bg-green-500' : 'bg-theme-orange'} ${isSubmitting ? 'hover:bg-green-400 hover:cursor-wait' : 'hover:bg-theme-orange-light'}`}
                     type="submit"
                     value={isSubmitting ? "Changes Saved." : "Save"}
                 />
