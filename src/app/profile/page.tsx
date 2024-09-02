@@ -8,12 +8,12 @@ import ProfileForm from './components/ProfileForm';
 
 export default function Profile() {
   const pathname = usePathname();
-  const activeTab = pathname.split('/')[1] || 'tracker';
+  const activeTab = pathname.split('/')[1] || 'search';
 
   return (
-    <main className="flex flex-col">
-      <div className="flex flex-col items-center">
-        <MainNav activeTab={activeTab as 'tracker' | 'walter' | 'profile'} />
+    <main className="flex flex-col items-center">
+      <div>
+        <MainNav activeTab={activeTab as 'search' | 'walter' | 'profile'} />
       </div>
       {/* body container */}
       <div className="flex items-center justify-center">

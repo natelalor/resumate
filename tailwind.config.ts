@@ -9,10 +9,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
-        boxShadow: {
-            'custom-light': '0 4px 6px rgba(0, 0, 0, 0.1)',
-            'custom-heavy': '0 0px 30px rgba(0, 0, 0, 0.15)',
-        }
+        colors: {
+            'theme-orange': 'rgb(225, 85, 6)',
+            'theme-orange-light': 'rgb(229, 115, 65)',
+            'theme-orange-super-light': 'rgb(255, 218, 202)',
+            'white': '#ffffff',
+            'text-color': 'text-gray-600',
+            'midnight-purple': '#3634a3'
+          },
     },
   },
   plugins: [],
