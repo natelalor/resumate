@@ -20,13 +20,13 @@ export default function ProfileForm() {
         <div className="">
             <form onSubmit={handleSubmit} className="flex flex-col space-y-4 py-10 px-5">
                 <label className="text-theme-orange" htmlFor="firstName">First Name</label>
-                <input type="text" id="firstName" name="firstName" placeholder="John" />
+                <input type="text" id="firstName" name="firstName" placeholder="John" className="rounded focus:outline-none" />
                 <label className="text-theme-orange" htmlFor="lastName">Last Name</label>
-                <input type="text" id="lastName" name="lastName" placeholder="Appleseed" />
+                <input type="text" id="lastName" name="lastName" placeholder="Appleseed" className="rounded focus:outline-none" />
                 <label className="text-theme-orange" htmlFor="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="name@email.com" />
+                <input type="email" id="email" name="email" placeholder="name@email.com" className="rounded focus:outline-none" />
                 <label className="text-theme-orange" htmlFor="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="111-1111" />
+                <input type="tel" id="phone" name="phone" placeholder="111-1111" className="rounded focus:outline-none" />
 
                 <input
                     className={`w-auto hover:cursor-pointer px-4 py-2 rounded-lg shadow-lg text-white ${isSubmitting ? 'bg-green-500' : 'bg-theme-orange'} ${isSubmitting ? 'hover:bg-green-400 hover:cursor-wait' : 'hover:bg-theme-orange-light'}`}

@@ -18,7 +18,7 @@ export default function Raymond() {
       {/* body container */}
       <div className="flex flex-col items-center max-w-xl w-full shadow-orange rounded-2xl">
         {/* chat window */}
-        <div className="flex w-full bg-theme-orange-super-light rounded-tl-2xl rounded-tr-2xl">
+        <div className="flex w-full rounded-tl-2xl rounded-tr-2xl">
           <ChatWindow />
         </div>
         {/* chat response bar */}
