@@ -13,11 +13,16 @@ export default function Walter() {
       <div>
         <MainNav activeTab={activeTab as 'search' | 'walter' | 'profile'} />
       </div>
-      <div>
-        <p>
-            WALTER!
-        </p>
+      {/* body container */}
+      <div className="flex items-center max-w-xl w-full shadow-orange rounded-2xl">
+        {/* chat text bar */}
+        <div className="flex bg-theme-orange h-2">
+          <form>
+            <input></input>
+          </form>
+        </div>
       </div>
+      
     </main>
   );
 }

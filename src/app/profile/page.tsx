@@ -3,6 +3,8 @@
 import React from 'react';
 import { usePathname } from 'next/navigation';
 import MainNav from '../components/MainNav';
+import ProfilePicture from './components/ProfilePicture';
+import ProfileForm from './components/ProfileForm';
 
 export default function Profile() {
   const pathname = usePathname();
@@ -13,10 +15,12 @@ export default function Profile() {
       <div>
         <MainNav activeTab={activeTab as 'search' | 'walter' | 'profile'} />
       </div>
-      <div>
-        <p>
-            PROFILE!
-        </p>
+      {/* body container */}
+      <div className="flex items-center justify-center">
+        <div className="flex items-center max-w-xl w-full shadow-orange rounded-2xl">
+          <ProfilePicture />
+          <ProfileForm />
+        </div>
       </div>
     </main>
   );
