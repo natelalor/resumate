@@ -13,7 +13,7 @@ export default function Profile() {
   return (
     <main className="flex flex-col items-center">
       <div>
-        <MainNav activeTab={activeTab as 'search' | 'walter' | 'profile'} />
+        <MainNav activeTab={activeTab as 'search' | 'raymond' | 'profile'} />
       </div>
       {/* body container */}
       <div className="flex items-center justify-center">

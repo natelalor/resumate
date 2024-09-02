@@ -23,7 +23,7 @@ export default function Search() {
   return (
     <main className='flex flex-col'>
       <div className='flex flex-col items-center'>
-        <MainNav activeTab={activeTab as 'search' | 'walter' | 'profile'} />
+        <MainNav activeTab={activeTab as 'search' | 'raymond' | 'profile'} />
       </div>
       <div className='w-full'>
         <h2 className='flex-1 text-midnight-purple font-extrabold text-3xl py-6'>

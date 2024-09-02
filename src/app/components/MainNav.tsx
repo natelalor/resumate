@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 
 interface NavProps {
-  activeTab: 'search' | 'walter' | 'profile';
+  activeTab: 'search' | 'raymond' | 'profile';
 }
 
 export default function MainNav({ activeTab }: NavProps) {
@@ -22,15 +22,15 @@ export default function MainNav({ activeTab }: NavProps) {
         </div>
       </Link>
 
-      <Link href="/walter">
+      <Link href="/raymond">
         <div
           className={`cursor-pointer px-4 py-2 rounded-lg tab-transition ${
-            activeTab === 'walter'
+            activeTab === 'raymond'
               ? 'text-white bg-theme-orange tab-active z-20 transform scale-110'
               : 'text-text-color z-10 hover:bg-theme-orange-super-light'
           }`}
         >
-          <p>Walter</p>
+          <p>Raymond</p>
         </div>
       </Link>
 
