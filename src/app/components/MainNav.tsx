@@ -9,7 +9,7 @@ interface NavProps {
 
 export default function MainNav({ activeTab }: NavProps) {
   return (
-    <div className="inline-flex justify-center items-center shadow-lg rounded-lg">
+    <div className="inline-flex mb-5 justify-center items-center shadow-lg rounded-lg">
       <Link href="/search">
         <div
           className={`cursor-pointer px-4 py-2 rounded-lg tab-transition ${
