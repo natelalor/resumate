@@ -22,7 +22,7 @@ export default function Raymond() {
           <ChatWindow />
         </div>
         {/* chat response bar */}
-        <div className="flex w-full bg-theme-orange rounded-bl-2xl rounded-br-2xl">
+        <div className="flex w-full justify-center bg-theme-orange rounded-bl-2xl rounded-br-2xl">
           <ChatBar />
         </div>
       </div>
