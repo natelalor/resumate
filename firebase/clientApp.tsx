@@ -1,6 +1,6 @@
-import firebase from "firebase/app"
-import "firebase/auth"
-import "firebase/firestore"
+import { initializeApp, getApps, getApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
     apiKey: process.env.API_KEY,
@@ -11,8 +11,19 @@ const firebaseConfig = {
     appId: process.env.APP_ID,
   };
 
-if (firebase.getApps().length < 1) {
-    firebase.initializeApp(firebaseConfig);
+// code segment to see if firebase has already been initialized
+let app;
+if (getApps().length === 0) {
+  // new firebase instance
+  app = initializeApp(firebaseConfig);
+} else {
+  // existing firebase instance
+  app = getApp();
 }
 
-export default firebase;
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+export {auth, db};
+
+

@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 export default function ChatWindow() {
 
     return (
-        <div className="h-96">
+        <div className="h-128">
             <p>
                 This is the chat window
             </p>
