@@ -15,6 +15,11 @@ module.exports = {
       boxShadow: {
         'orange': '0 0 6px 4px rgba(225, 85, 6, 0.5)',
       },
+      height: {
+        '128': '32rem', 
+        '144': '36rem',
+        '160': '40rem',
+      },
     },
   },
   plugins: [],
