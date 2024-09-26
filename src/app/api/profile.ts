@@ -24,7 +24,7 @@ export async function POST(request: Request) {
         if (error instanceof Error) {
             return NextResponse.json({ success: false, message: 'yo wtf just happened' });
         } else {
-            return NextResponse.json({ success: false, message: 'An unknown error occurred' });
+            return NextResponse.json({ success: false, message: 'An unknown error occurred when handling signup' });
         }
     }
 }
@@ -48,7 +48,7 @@ export async function GET(request: Request) {
         if (error instanceof Error) {
             return NextResponse.json({ success: false, message: 'error.message' });
         } else {
-            return NextResponse.json({ success: false, message: 'An unknown error occurred' });
+            return NextResponse.json({ success: false, message: 'An unknown error occurred when handling login' });
         }
     }
 }
