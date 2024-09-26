@@ -1,13 +1,14 @@
+// Form.tsx
 "use client";
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 interface FormProps {
-  activeTab: 'login' | 'signup';
+  type: 'login' | 'signup';
 }
 
-export default function Form({ activeTab }: FormProps) {
+export default function Form({ type }: FormProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -24,13 +25,13 @@ export default function Form({ activeTab }: FormProps) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password, firstName: '', lastName: '', phoneNumber: '' }), // For signup, include additional fields
+        body: JSON.stringify({ email, password, firstName: '', lastName: '', phoneNumber: '' }), // Modify as needed for signup
       });
 
       const result = await response.json();
 
       if (result.success) {
-        router.push('/search'); // Redirect to search page upon successful signup or login
+        router.push('/search');
       } else {
         alert('Error: ' + result.message);
       }
@@ -67,7 +68,7 @@ export default function Form({ activeTab }: FormProps) {
         required
       />
 
-      {activeTab === 'signup' && (
+      {type === 'signup' && (
         <>
           <label htmlFor="confirmPassword">Confirm Password:</label>
           <input
@@ -86,7 +87,7 @@ export default function Form({ activeTab }: FormProps) {
       <input
         className={`w-auto px-4 py-2 rounded-lg shadow-lg bg-theme-orange hover:bg-theme-orange-light text-white ${isSubmitting ? 'cursor-wait' : ''}`}
         type="submit"
-        value={isSubmitting ? 'Processing...' : "Let's Go"}
+        value={isSubmitting ? 'Processing...' : type === 'login' ? 'Login' : 'Sign Up'}
         disabled={isSubmitting}
       />
     </form>

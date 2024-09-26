@@ -46,7 +46,7 @@ export async function GET(request: Request) {
         return NextResponse.json({ success: true, userId: user.uid, userData });
     } catch (error) {
         if (error instanceof Error) {
-            return NextResponse.json({ success: false, message: error.message });
+            return NextResponse.json({ success: false, message: 'error.message' });
         } else {
             return NextResponse.json({ success: false, message: 'An unknown error occurred' });
         }

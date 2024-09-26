@@ -1,22 +1,12 @@
-"use client";
+// this is so login page.tsx is the homepage / landing page
 
-import React, { useState, useEffect, useRef } from 'react';
-import Form from './components/form';
-import Nav from './components/nav';
-import Title from './components/title';
+import { redirect } from 'next/navigation';
 
-export default function Login() {
-  const [activeTab, setActiveTab] = useState<'login' | 'signup'>('login');
-  
-  return (
-    <main className="flex flex-col items-center">
+export const metadata = {
+  title: 'Resumate - Login',
+  description: 'Login to Resumate to optimize your job applications.',
+};
 
-      <Title />
-        {/* body container */}
-        <div className="inline-flex flex-col items-center shadow-lg rounded-2xl">
-          <Nav activeTab={activeTab} setActiveTab={setActiveTab} />
-          <Form activeTab={activeTab} />
-        </div>
-    </main>
-  );
+export default function Home() {
+  redirect('/login');  // Automatically redirects to /login
 }
