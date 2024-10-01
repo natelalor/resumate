@@ -20,15 +20,31 @@ export default function Form({ type }: FormProps) {
     setIsSubmitting(true);
 
     try {
+      if (confirmPassword != null || confirmPassword != '') {
+        // they are signing up
+        alert(email + password + confirmPassword);
+        // here, do conditioning to make sure confirmpassword == password, then send to database as new input
+
+      } else {
+        // they are logging in 
+        alert(email + password);
+      }
       const response = await fetch('/api/profile', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password, firstName: '', lastName: '', phoneNumber: '' }), // Modify as needed for signup
+        body: JSON.stringify({ email, password }),
       });
+      
+      // Log the raw response
+      const rawResponse = await response.text(); // Get raw response as text
+      console.log('Raw Response:', rawResponse); // See what the server returns
+      
+      // Attempt to parse the response as JSON
+      const result = JSON.parse(rawResponse);
 
-      const result = await response.json();
+      // const result = await response.json();
 
       if (result.success) {
         router.push('/search');
