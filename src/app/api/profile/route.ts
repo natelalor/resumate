@@ -9,67 +9,106 @@ const isValidEmail = (email: string) => {
     return emailPattern.test(email);
 };
 
-// Handle signup
+// Handle requests
 export async function POST(request: Request) {
-    const { email, password, firstName = "John", lastName = "Appleseed", phoneNumber = "111-111-1111" } = await request.json();
+    // Read the request body once
+    const { action, email, password, firstName = "John", lastName = "Appleseed", phoneNumber = "111-111-1111", confirmPassword } = await request.json();
 
     // Preliminary validation
     if (!isValidEmail(email)) {
         return NextResponse.json({ success: false, message: 'The email address is invalid. Please provide a valid email.' });
     }
+
+    if (action === 'signup') {
+        if (password.length < 6) {
+            // this was just for fun, can make this actually more useful in the future ( < 6 is lame password handling)
+            return NextResponse.json({ success: false, message: 'The password is too weak. Please choose a stronger password.' });
+        }
+
+        // Check if confirmPassword matches
+        if (password !== confirmPassword) {
+            return NextResponse.json({ success: false, message: 'Passwords do not match. Please try again.' });
+        }
+
+        try {
+            // Create user in Firebase Authentication
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
+            // Store additional user info in Firestore
+            await setDoc(doc(db, 'users', user.uid), {
+                firstName,
+                lastName,
+                phoneNumber,
+            });
+
+            return NextResponse.json({ success: true, userId: user.uid });
+        } catch (error) {
+            if (error instanceof Error && 'code' in error) {
+                let errorMessage = 'An error occurred during signup.';
     
-    if (password.length < 6) { // Adjust the length check based on your criteria
-        return NextResponse.json({ success: false, message: 'The password is too weak. Please choose a stronger password.' });
-    }
+                switch (error.code) {
+                    case 'auth/email-already-in-use':
+                        errorMessage = 'The email address is already in use by another account.';
+                        break;
+                    case 'auth/weak-password':
+                        errorMessage = 'The password is too weak. Please choose a stronger password.';
+                        break;
+                    case 'auth/invalid-email':
+                        errorMessage = 'The email address is invalid. Please provide a valid email.';
+                        break;
+                    // Handle other cases as needed
+                    default:
+                        errorMessage = error.message; // Default to Firebase's error message
+                }
+    
+                return NextResponse.json({ success: false, message: errorMessage });
+            } else {
+                return NextResponse.json({ success: false, message: 'An unknown error occurred during signup.' });
+            }
+        }
+    } else if (action === 'login') {
+        // Only check password length during signup
+        try {
+            // Log in the user with Firebase Authentication
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
 
-    let createdUser = null;
+            // Fetch additional data from Firestore
+            const docRef = doc(db, 'users', user.uid);
+            const docSnap = await getDoc(docRef);
+            const userData = docSnap.exists() ? docSnap.data() : {};
 
-    try {
-        // Create user in Firebase Authentication
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        createdUser = userCredential.user; // Store user reference for later use
-
-        // Store additional user info in Firestore
-        await setDoc(doc(db, 'users', createdUser.uid), {
-            firstName,
-            lastName,
-            phoneNumber,
-        });
-
-        return NextResponse.json({ success: true, userId: createdUser.uid });
-    } catch (error) {
-        if (createdUser) {
-            await auth.currentUser?.delete(); // Remove the user account if it was created
+            return NextResponse.json({ success: true, userId: user.uid, userData });
+        } catch (error) {
+            if (error instanceof Error && 'code' in error) {
+                let errorMessage = 'An error occurred during login.';
+    
+                switch (error.code) {
+                    case 'auth/user-not-found':
+                        errorMessage = 'No user found with this email address.';
+                        break;
+                    case 'auth/wrong-password':
+                        errorMessage = 'The password is incorrect. Please try again.';
+                        break;
+                    case 'auth/invalid-email':
+                        errorMessage = 'The email address is invalid. Please provide a valid email.';
+                        break;
+                    case 'auth/invalid-credential':
+                        errorMessage = 'Invalid credentials provided. Please check your email and password.';
+                        break;
+                    // Handle other cases as needed
+                    default:
+                        errorMessage = error.message; // Default to Firebase's error message
+                }
+    
+                return NextResponse.json({ success: false, message: errorMessage });
+            } else {
+                return NextResponse.json({ success: false, message: 'An unknown error occurred during login.' });
+            }
         }
 
-        if (error instanceof Error && 'code' in error) {
-            return NextResponse.json({ success: false, message: error.message });
-        } else {
-            return NextResponse.json({ success: false, message: 'An unknown error occurred during signup.' });
-        }
-    }
-}
-
-// Handle login
-export async function GET(request: Request) {
-    const { email, password } = await request.json();
-
-    try {
-        // Log in the user with Firebase Authentication
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        const user = userCredential.user;
-
-        // Fetch additional data from Firestore
-        const docRef = doc(db, 'users', user.uid);
-        const docSnap = await getDoc(docRef);
-        const userData = docSnap.exists() ? docSnap.data() : {};
-
-        return NextResponse.json({ success: true, userId: user.uid, userData });
-    } catch (error) {
-        if (error instanceof Error) {
-            return NextResponse.json({ success: false, message: error.message });
-        } else {
-            return NextResponse.json({ success: false, message: 'An unknown error occurred when handling login' });
-        }
+    } else {
+        return NextResponse.json({ success: false, message: 'Invalid action specified.' });
     }
 }

@@ -1,4 +1,3 @@
-// Form.tsx
 "use client";
 
 import React, { useState } from 'react';
@@ -20,23 +19,30 @@ export default function Form({ type }: FormProps) {
     setIsSubmitting(true);
 
     try {
-      if (confirmPassword != null || confirmPassword != '') {
-        // they are signing up
-        alert(email + password + confirmPassword);
-        // here, do conditioning to make sure confirmpassword == password, then send to database as new input
-
-      } else {
-        // they are logging in 
-        alert(email + password);
+      if (type === 'signup') {
+        // Check that the confirm password matches the password
+        if (password !== confirmPassword) {
+          alert("Passwords do not match. Please try again.");
+          return; // Prevent submission
+        }
       }
+
+      const requestBody = {
+        action: type, // Include action here
+        email,
+        password,
+        ...(type === 'signup' && { confirmPassword }), // Include confirmPassword only for signup
+      };
+      
+
       const response = await fetch('/api/profile', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify(requestBody),
       });
-      
+
       // Log the raw response
       const rawResponse = await response.text(); // Get raw response as text
       console.log('Raw Response:', rawResponse); // See what the server returns
@@ -44,9 +50,8 @@ export default function Form({ type }: FormProps) {
       // Attempt to parse the response as JSON
       const result = JSON.parse(rawResponse);
 
-      // const result = await response.json();
-
       if (result.success) {
+        // Redirect to search page on successful login/signup
         router.push('/search');
       } else {
         alert('Error: ' + result.message);
